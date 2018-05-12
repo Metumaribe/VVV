@@ -1,0 +1,73 @@
+---
+sites:
+  wordpress-default:
+    repo: https://github.com/Varying-Vagrant-Vagrants/vvv-wordpress-default.git
+    skip_provisioning: false
+    hosts:
+      - local.wordpress.local
+
+  wordpress-develop:
+    repo: https://github.com/Varying-Vagrant-Vagrants/vvv-wordpress-develop.git
+    skip_provisioning: true
+    hosts:
+      - src.wordpress-develop.localhost
+      - build.wordpress-develop.localhost
+
+  otestmultisite:
+    repo: https://github.com/Metumaribe/custom-site-template.git
+    vm_dir: /srv/www/otestmultisite
+    branch: master
+    skip_provisioning: true
+    allow_customfile: false
+    nginx_upstream: php56
+    hosts:
+      - otestmultisite.localhost
+      - site1.otestmultisite.localhost
+      - site2.otestmultisite.localhost
+      - site3.otestmultisite.localhost
+      - site4.otestmultisite.localhost
+      - site5.otestmultisite.localhost
+      - site6.otestmultisite.localhost
+      - site7.otestmultisite.localhost
+    custom:
+      wp_type: subdomain
+      site_title: otestmultisite Dev
+      wp_version: 4.6.1
+
+# site in use
+  exempt.com:
+    vm_dir: /srv/www/exempt.com/htdocs
+    branch: master
+    skip_provisioning: false
+    allow_customfile: false
+    nginx_upstream: php
+    hosts:
+      - vvv.exempt.localhost
+      - csite.exempt.com
+    custom:
+      wp_type: subdomain
+
+  testsite:
+    repo: https://github.com/Metumaribe/vvv-site-default.git
+    vm_dir: /srv/www/testsite
+    branch: master
+    skip_provisioning: false
+    allow_customfile: false
+    nginx_upstream: php56
+    hosts:
+      - testsite.local
+
+vm_config:
+  memory: 2048
+  cores: 2
+
+utilities:
+  core:
+    - memcached-admin
+    - opcache-status
+    - phpmyadmin
+    - webgrind
+    - php56
+
+# utility-sources:
+#  core: https://github.com/Varying-Vagrant-Vagrants/vvv-utilities.git

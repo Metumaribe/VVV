@@ -10,8 +10,8 @@ sites:
     repo: https://github.com/Varying-Vagrant-Vagrants/vvv-wordpress-develop.git
     skip_provisioning: true
     hosts:
-      - src.wordpress-develop.localhost
-      - build.wordpress-develop.localhost
+      - src.wordpress-develop.local
+      - build.wordpress-develop.local
 
   otestmultisite:
     repo: https://github.com/Metumaribe/custom-site-template.git
@@ -21,14 +21,14 @@ sites:
     allow_customfile: false
     nginx_upstream: php56
     hosts:
-      - otestmultisite.localhost
-      - site1.otestmultisite.localhost
-      - site2.otestmultisite.localhost
-      - site3.otestmultisite.localhost
-      - site4.otestmultisite.localhost
-      - site5.otestmultisite.localhost
-      - site6.otestmultisite.localhost
-      - site7.otestmultisite.localhost
+      - otestmultisite.local
+      - site1.otestmultisite.local
+      - site2.otestmultisite.local
+      - site3.otestmultisite.local
+      - site4.otestmultisite.local
+      - site5.otestmultisite.local
+      - site6.otestmultisite.local
+      - site7.otestmultisite.local
     custom:
       wp_type: subdomain
       site_title: otestmultisite Dev
@@ -42,10 +42,19 @@ sites:
     allow_customfile: false
     nginx_upstream: php
     hosts:
-      - vvv.exempt.localhost
+      - vvv.exempt.local
       - csite.exempt.com
     custom:
       wp_type: subdomain
+
+  api.exempt.com:
+    vm_dir: /srv/www/exempt.api/htdocs
+    branch: master
+    skip_provisioning: false
+    allow_customfile: false
+    nginx_upstream: php
+    hosts:
+      - api.exempt.local
 
   testsite:
     repo: https://github.com/Metumaribe/vvv-site-default.git
